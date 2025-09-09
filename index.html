@@ -19,7 +19,7 @@ body {
   overflow-x:hidden;
 }
 
-/* Header sticky, fully visible */
+/* Header sticky */
 header{
   min-height:108px;
   padding:1rem 2rem;
@@ -35,7 +35,7 @@ header{
   overflow:hidden;
 }
 
-/* Floating balls (30) */
+/* Floating balls */
 .floating-circle{
   position:absolute;
   border-radius:50%;
@@ -43,7 +43,6 @@ header{
   animation: float 8s linear infinite;
   z-index:0;
 }
-/* Add all 30 balls with different positions/colors */
 .floating-circle:nth-child(1){ top:10px; left:20px; width:25px; height:25px; background:#a0dfff;}
 .floating-circle:nth-child(2){ top:50px; left:100px; width:30px; height:30px; background:#bce0ff;}
 /* ... continue up to 30 ... */
@@ -54,21 +53,21 @@ header{
   100% { transform: translateY(0) translateX(0); }
 }
 
-/* Profile picture lifted higher */
+/* Profile pic */
 .profile-pic{
   width:140px;
   height:140px;
   border-radius:50%;
   object-fit:cover;
   position:absolute;
-  top:20px;   /* lifted higher */
+  top:20px;
   right:40px;
   z-index:3;
   border:4px solid #fff;
   box-shadow:0 0 20px rgba(0,0,0,0.3);
 }
 
-/* Planetary rings behind profile pic */
+/* Rings */
 .profile-ring{
   position:absolute;
   border:2px solid #b0e0ff;
@@ -92,7 +91,7 @@ header{
 @keyframes blink{ 50%{opacity:0} }
 .tagline{ font-family:'Quicksand', sans-serif; font-size:1.1rem; margin:.5rem 0 0; color:#444; }
 
-/* Ribbon sticky below header, Fully visible */
+/* Navigation ribbon */
 nav{
   position:sticky;
   top:108px; 
@@ -145,14 +144,30 @@ section.show{ opacity:1; transform:translateY(0); }
 
 #projects{ min-height:30vh; }
 #contact{ min-height:20vh; }
+#resume{ min-height:20vh; }
+
+/* Button */
+.btn {
+  display:inline-block;
+  padding:0.6rem 1.2rem;
+  background:#0077cc;
+  color:#fff;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:600;
+  transition:background 0.3s;
+}
+.btn:hover { background:#005fa3; }
 
 section:nth-of-type(odd){ background:#f9fcff; border-left:5px solid var(--sky-border); }
 section:nth-of-type(even){ background:#fffdf9; border-right:5px solid #ffeecf; }
 section h2{ font-family:'Playfair Display SC', serif; font-size:2rem; margin:0 0 1rem; color:#002244; }
 section p{ font-size:1.05rem; line-height:1.6; max-width:700px; }
 
+/* Footer */
 footer{ background:#0077cc; text-align:center; padding:1rem; font-size:.9rem; color:#fff; border-top:2px solid #005fa3; }
 
+/* Responsive */
 @media(max-width:700px){
   header{ flex-direction:column; text-align:center; }
   .typing{ font-size:2rem; }
@@ -170,17 +185,17 @@ footer{ background:#0077cc; text-align:center; padding:1rem; font-size:.9rem; co
 <header>
   <!-- Floating balls -->
   <div class="floating-circle"></div><div class="floating-circle"></div><div class="floating-circle"></div>
-  <!-- ... all 30 floating-circle elements ... -->
+  <!-- ... add rest of 30 floating-circle elements ... -->
 
-  <!-- Planetary rings -->
+  <!-- Rings -->
   <div class="profile-ring ring1"></div>
   <div class="profile-ring ring2"></div>
   <div class="profile-ring ring3"></div>
 
-  <!-- Profile picture -->
-  <img src="images/Profile.jpg" alt="My Profile Picture" class="profile-pic" width>
+  <!-- Profile pic -->
+  <img src="images/Profile.jpg" alt="My Profile Picture" class="profile-pic">
 
-  <!-- Name and tagline -->
+  <!-- Text -->
   <div class="header-content">
     <div class="typing-wrap">
       <h1 class="typing"></h1>
@@ -196,7 +211,7 @@ footer{ background:#0077cc; text-align:center; padding:1rem; font-size:.9rem; co
   <a href="#education">Education</a>
   <a href="#projects">Projects</a>
   <a href="#contact">Contact</a>
-  <a href="resume.pdf" target="_blank">Resume</a>
+  <a href="#resume">Resume</a>
 </nav>
 
 <section id="about">
@@ -217,7 +232,7 @@ footer{ background:#0077cc; text-align:center; padding:1rem; font-size:.9rem; co
 <h2>Education</h2>
 <div class="edu-entry"><p><strong>2025–Present:</strong> Dr. Subhash University | Masters in Computer Applications </p></div>
 <div class="edu-entry"><p><strong>2021–2023:</strong> Bhakta kavi Narsinh Maheta University | Bachelors in Computer Applications </p></div>
-<div class="edu-entry"><p><strong>2019–2020:</strong> Gujarat Higher Secondary education Board | H.S.C. Arts </p></div>
+<div class="edu-entry"><p><strong>2019–2020:</strong> Gujarat Higher Secondary Education Board | H.S.C. Arts </p></div>
 </section>
 
 <section id="projects">
@@ -233,7 +248,7 @@ footer{ background:#0077cc; text-align:center; padding:1rem; font-size:.9rem; co
 <section id="resume">
   <h2>Resume</h2>
   <p>You can view or download my resume by clicking the button below:</p>
-  <a href="resume.pdf" target="_blank" class="btn">Open Resume</a>
+  <a href="resume.pdf" target="_blank" class="btn">📄 Open Resume</a>
 </section>
 
 <footer>© 2025 Anjali Sosa. All Rights Reserved.</footer>
@@ -278,7 +293,7 @@ const sectionObserver = new IntersectionObserver((entries)=>{
 }, { threshold:0.6 });
 sections.forEach(s => sectionObserver.observe(s));
 
-// Smooth scroll with delay animation
+// Smooth scroll
 navLinks.forEach(link=>{
   link.addEventListener("click", function(e){
     e.preventDefault();
@@ -293,8 +308,4 @@ navLinks.forEach(link=>{
 });
 </script>
 </body>
-
 </html>
-
-
-
