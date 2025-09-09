@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Anjali Sosa | Portfolio</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@700&family=Poppins:wght@400;600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root { --sky:#E6F7FF; --sky-border:#d0f0ff; }
+html, body { margin:0; padding:0; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background:#fff;
+  color:#333;
+  scroll-behavior:smooth;
+  overflow-x:hidden;
+}
+
+/* Header sticky, fully visible */
+header{
+  min-height:108px;
+  padding:1rem 2rem;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  display:flex;
+  align-items:flex-start;
+  justify-content:flex-start;
+  gap:1rem;
+  background:var(--sky);
+  border-bottom:3px solid var(--sky-border);
+  overflow:hidden;
+}
+
+/* Floating balls (30) */
+.floating-circle{
+  position:absolute;
+  border-radius:50%;
+  opacity:0.2;
+  animation: float 8s linear infinite;
+  z-index:0;
+}
+/* Add all 30 balls with different positions/colors */
+.floating-circle:nth-child(1){ top:10px; left:20px; width:25px; height:25px; background:#a0dfff;}
+.floating-circle:nth-child(2){ top:50px; left:100px; width:30px; height:30px; background:#bce0ff;}
+/* ... continue up to 30 ... */
+
+@keyframes float{
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-20px) translateX(15px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+/* Profile picture lifted higher */
+.profile-pic{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  object-fit:cover;
+  position:absolute;
+  top:20px;   /* lifted higher */
+  right:40px;
+  z-index:3;
+  border:4px solid #fff;
+  box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+
+/* Planetary rings behind profile pic */
+.profile-ring{
+  position:absolute;
+  border:2px solid #b0e0ff;
+  border-radius:50%;
+  top:25px;
+  right:50px;
+  z-index:2;
+}
+.ring1{ width:180px; height:180px; }
+.ring2{ width:220px; height:220px; border-color:#a0dfff; }
+.ring3{ width:260px; height:260px; border-color:#d0f0ff; }
+
+/* Header content */
+.header-content{
+  z-index:4;
+  margin-right:auto;
+}
+.typing-wrap{ display:flex; align-items:center; white-space:nowrap; }
+.typing{ font-family:'Playfair Display SC', serif; font-size:3rem; font-weight:700; color:#003366; text-transform:uppercase; margin:0; }
+.cursor{ display:inline-block; width:3px; height:3rem; background:blue; margin-left:6px; animation:blink .7s steps(1) infinite; vertical-align:middle; }
+@keyframes blink{ 50%{opacity:0} }
+.tagline{ font-family:'Quicksand', sans-serif; font-size:1.1rem; margin:.5rem 0 0; color:#444; }
+
+/* Ribbon sticky below header, Fully visible */
+nav{
+  position:sticky;
+  top:108px; 
+  z-index:2000;
+  background:#d0f0ff;
+  display:flex;
+  justify-content:center;
+  gap:2rem;
+  padding:1rem;
+  border-bottom:2px solid #b9e6ff;
+}
+nav a{
+  text-decoration:none; color:#003366; font-weight:600;
+  font-family:'Quicksand', sans-serif;
+  padding:.35rem .6rem; border-radius:6px;
+  transition:background .25s, color .25s;
+}
+nav a:hover{ background:#0077cc; color:#fff; }
+nav a.active{ background:#0077cc; color:#fff; }
+
+/* Sections */
+section{
+  min-height:50vh;
+  padding:3rem 2rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  font-family:'Quicksand', sans-serif;
+  opacity:0;
+  transform:translateY(80px);
+  transition:opacity .9s ease, transform .9s ease;
+}
+section.show{ opacity:1; transform:translateY(0); }
+
+#about{ min-height:35vh; }
+#skills{ min-height:50vh; display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; }
+.skill-pill{ padding:.6rem 1rem; border-radius:30px; color:#fff; font-weight:600; font-size:1rem; }
+.html{ background:#f16529; }
+.css{ background:#2965f1; }
+.js{ background:#f0db4f; color:#333; }
+.python{ background:#306998; }
+.cpp{ background:#00599C; }
+
+#education{ min-height:50vh; display:flex; flex-direction:column; align-items:flex-start; position:relative; padding-left:2rem; }
+#education::before{ content:""; position:absolute; left:1rem; top:0; width:4px; height:100%; background:#d0f0ff; }
+.edu-entry{ position:relative; margin-bottom:2rem; padding-left:1.5rem; }
+.edu-entry::before{ content:""; position:absolute; left:-.8rem; top:.2rem; width:1rem; height:1rem; background:#0077cc; border-radius:50%; }
+
+#projects{ min-height:30vh; }
+#contact{ min-height:20vh; }
+
+section:nth-of-type(odd){ background:#f9fcff; border-left:5px solid var(--sky-border); }
+section:nth-of-type(even){ background:#fffdf9; border-right:5px solid #ffeecf; }
+section h2{ font-family:'Playfair Display SC', serif; font-size:2rem; margin:0 0 1rem; color:#002244; }
+section p{ font-size:1.05rem; line-height:1.6; max-width:700px; }
+
+footer{ background:#0077cc; text-align:center; padding:1rem; font-size:.9rem; color:#fff; border-top:2px solid #005fa3; }
+
+@media(max-width:700px){
+  header{ flex-direction:column; text-align:center; }
+  .typing{ font-size:2rem; }
+  .cursor{ height:2rem; }
+  .profile-pic{ margin-top:1rem; width:120px; height:120px; top:auto; right:auto; }
+  nav{ flex-wrap:wrap; gap:1rem; }
+  section{ padding:2rem 1rem; min-height:auto; }
+  #contact{ min-height:15vh; }
+  #projects{ min-height:25vh; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <!-- Floating balls -->
+  <div class="floating-circle"></div><div class="floating-circle"></div><div class="floating-circle"></div>
+  <!-- ... all 30 floating-circle elements ... -->
+
+  <!-- Planetary rings -->
+  <div class="profile-ring ring1"></div>
+  <div class="profile-ring ring2"></div>
+  <div class="profile-ring ring3"></div>
+
+  <!-- Profile picture -->
+  <img src="index.jpg" alt="Profile" class="profile-pic" width>
+
+  <!-- Name and tagline -->
+  <div class="header-content">
+    <div class="typing-wrap">
+      <h1 class="typing"></h1>
+      <span class="cursor"></span>
+    </div>
+    <p class="tagline">Student MCA Sem-1 | Dr. Subhash Uni.</p>
+  </div>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#education">Education</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="about">
+<h2>About Me</h2>
+<p>I am a student at <strong>Dr. Subhash University</strong>, passionate about coding, design, and creating beautiful web experiences. This portfolio is my journey into technology and creativity.</p>
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+<div class="skill-pill html">Learning HTML</div>
+<div class="skill-pill css">Learning CSS</div>
+<div class="skill-pill js">Learning JavaScript</div>
+<div class="skill-pill python">Learning Python</div>
+<div class="skill-pill cpp">Learning C++</div>
+</section>
+
+<section id="education">
+<h2>Education</h2>
+<div class="edu-entry"><p><strong>2025–Present:</strong> Dr. Subhash University | Masters in Computer Applications </p></div>
+<div class="edu-entry"><p><strong>2021–2023:</strong> Bhakta kavi Narsinh Maheta University | Bachelors in Computer Applications </p></div>
+<div class="edu-entry"><p><strong>2019–2020:</strong> Gujarat Higher Secondary education Board | H.S.C. Arts </p></div>
+</section>
+
+<section id="projects">
+<h2>Projects</h2>
+<p>Website, Portfolio, and many more to come…</p>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<p>📧 Email: Sosaanju0@gmailcom<br/>📱 Phone: +91-7862012679<br/>🔗 LinkedIn: <a href="https://www.linkedin.com/in/your-profile" target="_blank">linkedin.com/in/your-profile</a></p>
+</section>
+
+<footer>© 2025 Anjali Sosa. All Rights Reserved.</footer>
+
+<script>
+const text = "ANJALI SOSA";
+const typingEl = document.querySelector(".typing");
+let i = 0;
+function type(){
+  if(i < text.length){
+    typingEl.textContent = text.substring(0, i+1);
+    i++;
+    setTimeout(type,150);
+  }
+}
+window.addEventListener('DOMContentLoaded', type);
+
+// Section reveal
+const sections = document.querySelectorAll("section");
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold:0.3 });
+sections.forEach(s => observer.observe(s));
+
+// Nav highlight
+const navLinks = document.querySelectorAll("nav a");
+const sectionObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      navLinks.forEach(link=>{
+        link.classList.remove("active");
+        if(link.getAttribute("href").substring(1)===entry.target.id){
+          link.classList.add("active");
+        }
+      });
+    }
+  });
+}, { threshold:0.6 });
+sections.forEach(s => sectionObserver.observe(s));
+
+// Smooth scroll with delay animation
+navLinks.forEach(link=>{
+  link.addEventListener("click", function(e){
+    e.preventDefault();
+    const targetId = this.getAttribute("href").substring(1);
+    const target = document.getElementById(targetId);
+    target.classList.remove("show");
+    setTimeout(()=>{
+      target.scrollIntoView({ behavior:"smooth", block:"center" });
+      setTimeout(()=> target.classList.add("show"),400);
+    },200);
+  });
+});
+</script>
+</body>
+</html>
